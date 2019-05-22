@@ -1,3 +1,3 @@
 # My-configs
-My configuration files for tmux vim ranger Xresources openbox ranger i3wm
+My configuration files for tmux vim Xresources openbox ranger i3wm
 
