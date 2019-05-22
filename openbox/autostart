@@ -1,0 +1,9 @@
+#feh --bg-fill ~/Pictures/wallpapers/circles1366x768c.png &
+xset -dpms s off &
+tint2 &
+mate-power-manager &
+mate-volume-control-applet &
+mate-settings-daemon &
+compton -b &
+#wal -R --vte &
+#conky -p 5 -c /home/bitflow/.conky/urgo/.conkyrc &
