@@ -1,28 +1,53 @@
+"show line numbers:
 set number
-set background=dark
-" supercollider flash on evaluate
+
+"set dark background:
+"set background=dark
+
+" supercollider flash on evaluate:
 let g:scFlash = 1
-"set termguicolors
-"set t_Co=256
+
+"them params:
+set termguicolors
+set t_Co=256
+
 "set color theme
-"colo deep-space
-"colo default
+"available default themes:
+" blue        deep-space  delek       elflord     industry    morning     pablo       ron         slate       zellner
+" darkblue    default     desert      evening     koehler     murphy      peachpuff   shine       torte	      space-sb
+colo space-sb
+
 "hi Normal ctermbg=NONE guibg=NONE
 "hi NonText ctermbg=NONE guibg=NONE
+
 " adjust colors sb ^_^
-hi ModeMsg term=reverse cterm=reverse gui=reverse ctermfg=1 ctermbg=0
+hi ModeMsg term=reverse cterm=reverse gui=reverse ctermfg=2 ctermbg=0
 hi StatusLine term=bold,reverse cterm=bold,reverse gui=bold,reverse ctermfg=Black ctermbg=Grey
-hi StatusLineNC term=reverse cterm=reverse gui=reverse ctermfg=Black ctermbg=Grey
-hi VertSplit term=reverse cterm=reverse gui=reverse ctermfg=Black ctermbg=Grey
+hi StatusLineNC term=bold,reverse cterm=bold,reverse gui=bold,reverse ctermfg=Black ctermbg=Grey
+hi VertSplit term=bold,reverse cterm=bold,reverse gui=bold,reverse ctermfg=Black ctermbg=Grey
+highlight Cursor guifg=NONE guibg=Green
+highlight lCursor guifg=NONE guibg=Cyan
+
 " Add full file path to your existing statusline, F full path, f relative path
 set statusline+=%F
 set laststatus=2
+
 syntax on
 filetype plugin indent on
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
+
+" ultisnip settings:
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-a>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 " Make sure you use single quotes
 
@@ -45,6 +70,12 @@ Plug 'https://github.com/tyru/open-browser.vim.git'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
+
+" Track the engine.
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
 
 " Powerline
 " Plug 'vim-airline/vim-airline'
