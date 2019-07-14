@@ -155,8 +155,8 @@ mode "resize" {
         # Pressing down will grow the window’s height.
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym ograve resize grow width 10 px or 10 ppt
+        bindsym i resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -175,15 +175,17 @@ bindsym $mod+r mode "resize"
 #exec wal -R -t
 
 exec --no-startup-id  feh --bg-scale /home/bitflow/Pictures/wallpapers/findyourplace.jpg
-exec /usr/lib/x86_64-linux-gnu/polkit-mate/polkit-mate-authentication-agent-1
+#exec /usr/lib/x86_64-linux-gnu/polkit-mate/polkit-mate-authentication-agent-1
 
 #exec i3-msg workspace 1 ; i3-msg exec firefox ; #auto start an app on a workspace
 
 #exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1
 exec --no-startup-id xset -dpms s off
 exec --no-startup-id mate-settings-daemon
+exec --no-startup-id mate-power-manager
 exec --no-startup-id mate-volume-control-applet
 exec --no-startup-id nm-applet
+exec --no-startup-id compton -b
 #exec --no-startup-id wal -i /home/bitflow/Pictures/wallpapers/crt.jpg -t
 #exec --no-startup-id wal -R -t
 #exec --no-startup-id conky -p 5 -c /home/bitflow/.conky/urgo/.conkyrc
@@ -261,9 +263,13 @@ workspace "9" output HDMI1
 hide_edge_borders both
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% & pactl set-sink-volume 4 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% & pactl set-sink-volume 4 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle & set-sink-mute 4 toggle # mute sound
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% & pactl set-sink-volume 4 +5% #increase sound volume
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% & pactl set-sink-volume 4 -5% #decrease sound volume
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle & set-sink-mute 4 toggle # mute sound
+
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-
+bindsym XF86AudioMute exec amixer -D pulse sset Master 0
 
 #bindsym XF86AudioRaiseVolume exec amixer -q set Master 1dB+ unmute
 #bindsym XF86AudioLowerVolume exec amixer -q set Master 1dB- unmute
@@ -289,7 +295,7 @@ bar {
 		tray_output LVDS1 #primary
 #		position top
 		tray_padding 0
-		separator_symbol "|"
+		separator_symbol "/"
 		#strip_workspace_numbers yes
 		output LVDS1
     colors {
