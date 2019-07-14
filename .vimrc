@@ -7,7 +7,14 @@ set number
 " supercollider flash on evaluate:
 let g:scFlash = 1
 
-"them params:
+" YCM compilation flags
+let g:ycm_global_ycm_extra_conf = '/home/bitflow/.vim/plugged/YouCompleteMe/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = "~/.ycm_c-c++_conf.py"
+
+"let g:ycm_goto_buffer_command = 'split' " 'same-buffer'
+nnoremap <F5> :rightbelow YcmCompleter GoTo<CR>
+
+"theme params:
 set termguicolors
 set t_Co=256
 
@@ -29,7 +36,7 @@ highlight Cursor guifg=NONE guibg=Green
 highlight lCursor guifg=NONE guibg=Cyan
 
 " Add full file path to your existing statusline, F full path, f relative path
-set statusline+=%F
+"set statusline+=%F
 set laststatus=2
 
 syntax on
